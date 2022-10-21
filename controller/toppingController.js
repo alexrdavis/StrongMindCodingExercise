@@ -4,7 +4,7 @@ module.exports = {
     getPizzaToppings: async(req, res) => {
         try {
             const toppings = await PizzaTopping.find()
-            res.send(toppings)
+            res.render("toppings.ejs", {toppings:toppings})
         } catch(err) {
             console.error(err)
         }
