@@ -16,6 +16,7 @@ db.once('open', _ => { console.log('Database connected') })
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 app.use('/toppings', toppingRouter)
 app.use('/pizzas', pizzaRouter)
 

@@ -11,10 +11,10 @@ module.exports = {
     },
     createPizzaToppings: async(req, res) => {
         try {
-            const toppings = await PizzaTopping.create({name: req.body.name})
-            res.send(toppings)
+            await PizzaTopping.create({name: req.body.name})
+            res.redirect("/toppings")
         } catch(err) {
-            console.error(err)
+            res.status(400)
         }
     },
     deletePizzaToppings: async(req, res) => {

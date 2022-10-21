@@ -10,6 +10,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body>
+    <h2 class="d-flex justify-content-center mt-3">Add Pizza Topping</h2>
+    <form action="/toppings" method="POST" class="d-flex justify-content-center mt-3">
+        <input type="text" name="name">
+        <button type="submit">Submit</button>
+    </form>
+
     <h2 class="d-flex justify-content-center mt-3">Toppings</h2>
 
     <% if(toppings) { %>
@@ -17,8 +23,7 @@
             <div class="container list-group">
                 <div class="topping-value" data-id='<%=toppingValue._id%>'><div class="list-group-item"><%= toppingValue.name %></div>
                     <a class="topping-delete <%= toppingValue._id %>">Delete</a>
-                    <a class="topping-edit <%= toppingValue._id %>">Add</a>
-                    <a class="topping-show <%= toppingValue._id %>">Edit</a>
+                    <a class="topping-edit <%= toppingValue._id %>">Edit</a>
                 </div>
             </div>
         <% }) %> 
