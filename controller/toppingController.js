@@ -11,9 +11,12 @@ module.exports = {
     },
     createPizzaToppings: async(req, res) => {
         try {
-            await PizzaTopping.create({name: req.body.name})
+            await PizzaTopping.create({name: (req.body.name).toLowerCase()})
             res.redirect("/toppings")
         } catch(err) {
+            if(err.code == "11000") {
+                res.send("<script> alert('Error: Duplicate entry'); window.location =  '/toppings'; </script>")
+            }
             res.status(400)
         }
     },
