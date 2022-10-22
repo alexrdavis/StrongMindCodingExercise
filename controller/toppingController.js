@@ -30,8 +30,8 @@ module.exports = {
     },
     getOneTopping: async(req, res) => {
         try {
-            const toppings = await PizzaTopping.findById({_id: req.params.id})
-            res.json("Topping: " + toppings.name)
+            const topping = await PizzaTopping.findById({_id: req.params.id})
+            res.render("updateTopping.ejs", {topping:topping})
         } catch (err) {
             console.error(err)
         }
@@ -40,11 +40,14 @@ module.exports = {
         let topping
         try {
             topping = await PizzaTopping.findById(req.params.id)
-            topping.name = req.body.name
+            topping.name = (req.body.name).toLowerCase()
             await topping.save()
-            res.json("Topping updated " + topping.name)
+            res.redirect("/toppings")
         } catch (err) {
-            console.error(err)
+            if(err.code == "11000") {
+                res.send("<script> alert('Error: Duplicate entry'); window.location =  '/toppings'; </script>")
+            }
+            res.status(400)
         }
     }
 }

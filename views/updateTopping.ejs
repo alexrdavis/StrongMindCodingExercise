@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StrongMind Interview</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="/css/edit.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+    <a href="/toppings">Cancel</a>
+    <h2 class="d-flex justify-content-center mt-3">Add Pizza Topping</h2>
+    <form action="/toppings/<%= topping.id %>?_method=PUT" method="POST" class="d-flex justify-content-center mt-3">
+        <input type="text" name="name">
+        <button type="submit">Update</button>
+    </form>
+
+    <div class="container">
+        <p>Topping: <%= topping.name %></p>
+    </div>
+    <script src="/main.js"></script>
+</body>
+</html>
