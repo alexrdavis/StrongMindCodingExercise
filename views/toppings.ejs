@@ -12,7 +12,7 @@
 <body>
     <h2 class="d-flex justify-content-center mt-3">Add Pizza Topping</h2>
     <form action="/toppings" method="POST" class="d-flex justify-content-center mt-3">
-        <input type="text" name="name">
+        <input type="text" name="name" pattern="[A-Za-z]">
         <button type="submit">Submit</button>
     </form>
 
@@ -28,8 +28,6 @@
             </div>
         <% }) %> 
     <% } %>
-
-    <div id="message"></div>
 
     <script src="/main.js"></script>
 </body>
