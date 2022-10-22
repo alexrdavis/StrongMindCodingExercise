@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const port = 3000
+const methodOverride = require('method-override')
 const toppingRouter = require('./routes/toppingsRoute')
 const pizzaRouter = require('./routes/pizzaRoutes')
 
@@ -15,6 +16,7 @@ db.once('open', _ => { console.log('Database connected') })
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use('/toppings', toppingRouter)
