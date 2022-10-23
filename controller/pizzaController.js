@@ -6,7 +6,7 @@ module.exports = {
         try {
             const pizzas = await Pizzas.find()
             const toppings = await Toppings.find()
-            res.send(pizzas)
+            res.render("pizzas.ejs", {pizzas: pizzas, toppings: toppings})
         } catch(err) {
             console.error(err)
         }
