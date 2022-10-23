@@ -65,7 +65,10 @@ module.exports = {
             await pizza.save()
             res.redirect(`/pizzas/${pizza.id}`)
         } catch (err) {
-            console.error(err)
+            if(err.code == "11000") {
+                res.send("<script> alert('Error: Duplicate entry'); window.location =  '/pizzas'; </script>")
+            }
+            res.status(400)
         }
     }
 }
