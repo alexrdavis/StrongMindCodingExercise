@@ -7,8 +7,8 @@ const schema = new Schema({
         unique: true
     },
     topping: {
-        type: String,
-        unique: true
+        type: Array,
+        unique: false
     }
 })
 
