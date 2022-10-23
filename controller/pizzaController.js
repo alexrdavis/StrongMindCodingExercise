@@ -34,9 +34,9 @@ module.exports = {
     },
     getOnePizza: async(req, res) => {
         try {
-            const pizzas = await Pizzas.findById({_id: req.params.id})
+            const pizza = await Pizzas.findById({_id: req.params.id})
             const toppings = await Toppings.find()
-            res.json("Pizza: " + pizzas.name)
+            res.render("updatePizza.ejs", {pizza: pizza, pizzasTopping: pizza.topping, toppings: toppings})
         } catch (err) {
             console.error(err)
         }
@@ -45,9 +45,25 @@ module.exports = {
         let pizza
         try {
             pizza = await Pizzas.findById(req.params.id)
-            pizza.name = req.body.name
+            if(req.body.name == "") {
+                pizza.name = pizza.name
+            } else {
+                pizza.name = (req.body.name).toLowerCase()
+            }
+            
+            let obj = req.body
+            let toppingValue = Object.values(obj).slice(1)
+
+            toppingValue.forEach(val => {
+                if(val == "") {
+                    pizza.topping = pizza.topping
+                } else {
+                    pizza.topping = toppingValue
+                }
+            })
+
             await pizza.save()
-            res.json("Topping updated " + pizza.name)
+            res.redirect(`/pizzas/${pizza.id}`)
         } catch (err) {
             console.error(err)
         }
