@@ -13,10 +13,15 @@ module.exports = {
     },
     createPizza: async(req, res) => {
         try {
-            const pizzas = await Pizzas.create({name: req.body.name, topping: req.body.topping})
-            res.send(pizzas)
+            let obj = req.body
+            let toppingValue = Object.values(obj).slice(1)
+            const pizzas = await Pizzas.create({name: (req.body.name).toLowerCase(), topping: toppingValue})
+            res.redirect("/pizzas")
         } catch(err) {
-            console.error(err)
+            if(err.code == "11000") {
+                res.send("<script> alert('Error: Duplicate entry'); window.location =  '/pizzas'; </script>")
+            }
+            res.status(400)
         }
     },
     deletePizzas: async(req, res) => {
