@@ -1,0 +1,21 @@
+<a href="/pizzas">Cancel</a>
+<h1 class="d-flex justify-content-center mt-4 mb-3">Update Pizzas</h1>
+<form action="/pizzas/<%= pizza.id %>?_method=PUT" method="POST" class="d-flex justify-content-center mt-3">
+    <input type="text" name="name">
+    <% if(toppings) { %>
+        <% toppings.forEach(toppingValue => { %>
+            <div class="form-check"></div>
+                <input class="form-check-input" type="checkbox" name="<%= toppingValue.name %>" value="<%= toppingValue.name %>"  id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                <%= toppingValue.name %>
+                </label>
+            </div>
+        <% }) %> 
+    <% } %>
+    <button type="submit">Submit</button>
+</form>
+
+<h2>Toppings on pizza</h2>
+<p><%= pizzasTopping %></p>
+<h2>Pizza name</h2>
+<p><%= pizza.name %></p>
