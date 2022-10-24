@@ -4,6 +4,8 @@ const express = require('express')
 const app = express()
 const port = 3000
 const methodOverride = require('method-override')
+const path = require('path')
+const public = path.join(__dirname, 'public')
 const toppingRouter = require('./routes/toppingsRoute')
 const pizzaRouter = require('./routes/pizzaRoutes')
 
@@ -23,7 +25,7 @@ app.use('/toppings', toppingRouter)
 app.use('/pizzas', pizzaRouter)
 
 app.get("/", (req, res) => {
-    res.send("Home page")
+    res.sendFile(path.join(public, 'home.html'))
 })
 
 app.listen(port, () => {

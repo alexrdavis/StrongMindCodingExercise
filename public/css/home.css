@@ -1,0 +1,71 @@
+html body {
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    height: 100vh;
+}
+
+.container {
+    height: 100%;
+    text-align: center;
+}
+
+button a {
+    text-decoration: none;
+}
+
+.main-container {
+    height: 100vh;
+}
+
+
+/** ellipse design **/
+.hero-container {
+    display: flex;
+    max-width: 80%;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.ellipse {
+    width: 50%;
+    border-radius: 50%;
+    background-color: #FFC555;
+    background-image: url("../img/hero-pizza.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+}
+
+.ellipse::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+/** text styles **/
+.hero-text {
+    margin: 0 auto;
+}
+
+.hero-text .btn, .hero-text h2 {
+    margin-top: 1.2em;
+}
+
+/** media query **/
+@media screen and (max-width: 596px) {
+    .hero-container {
+      justify-content: center;
+      flex-direction: column;
+    }
+    .ellipse {
+        width: 100%;
+    }
+    .hero-text {
+        padding-bottom: 2em;
+    }
+  }
+
