@@ -2,7 +2,6 @@ require('dotenv').config()
 
 const express = require('express')
 const app = express()
-const port = 3000
 const methodOverride = require('method-override')
 const path = require('path')
 const public = path.join(__dirname, 'public')
@@ -28,6 +27,6 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(public, 'home.html'))
 })
 
-app.listen(port, () => {
-    console.log("listening on " + port)
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`server has started on port ${process.env.PORT || 3000}`)
 })
