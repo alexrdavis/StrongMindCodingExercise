@@ -1,21 +1,37 @@
-<a href="/pizzas">Cancel</a>
-<h1 class="d-flex justify-content-center mt-4 mb-3">Update Pizzas</h1>
-<form action="/pizzas/<%= pizza.id %>?_method=PUT" method="POST" class="d-flex justify-content-center mt-3">
-    <input type="text" name="name">
-    <% if(toppings) { %>
-        <% toppings.forEach(toppingValue => { %>
-            <div class="form-check"></div>
-                <input class="form-check-input" type="checkbox" name="<%= toppingValue.name %>" value="<%= toppingValue.name %>"  id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                <%= toppingValue.name %>
-                </label>
-            </div>
-        <% }) %> 
-    <% } %>
-    <button type="submit">Submit</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StrongMind Interview</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+</head>
+<body>
+    <a type="button" class="btn btn-dark" href="/pizzas">Cancel</a>
+    <h1 class="d-flex justify-content-center mt-4 mb-3">Update Pizzas</h1>
+    <div class="form-container d-flex justify-content-center mt-3">
+        <form action="/pizzas/<%= pizza.id %>?_method=PUT" method="POST" class="form-group">
+            <input type="text" name="name">
+            <% if(toppings) { %>
+                <% toppings.forEach(toppingValue => { %>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="<%= toppingValue.name %>" value="<%= toppingValue.name %>"  id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                        <%= toppingValue.name %>
+                        </label>
+                    </div>
+                <% }) %> 
+            <% } %>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
-<h2>Toppings on pizza</h2>
-<p><%= pizzasTopping %></p>
-<h2>Pizza name</h2>
-<p><%= pizza.name %></p>
+    <div class="container flex-column d-flex justify-content-center mt-4 mb-3">
+        <h2>Toppings on pizza</h2>
+        <p><%= pizzasTopping %></p>
+        <h2>Pizza name</h2>
+        <p><%= pizza.name %></p>
+    </div>
+</body>
+</html>
