@@ -28,6 +28,7 @@ module.exports = {
         try {
             await Pizzas.findByIdAndDelete({_id: req.params.id})
             res.json("Deleted pizza with id " + req.params.id)
+            res.status(200)
         } catch(err) {
             console.error(err)
         }
@@ -37,6 +38,7 @@ module.exports = {
             const pizza = await Pizzas.findById({_id: req.params.id})
             const toppings = await Toppings.find()
             res.render("updatePizza.ejs", {pizza: pizza, pizzasTopping: pizza.topping, toppings: toppings})
+            res.status(200)
         } catch (err) {
             console.error(err)
         }

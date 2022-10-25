@@ -5,6 +5,7 @@ module.exports = {
         try {
             const toppings = await PizzaTopping.find()
             res.render("toppings.ejs", {toppings:toppings})
+            res.status(200)
         } catch(err) {
             console.error(err)
         }
@@ -12,6 +13,7 @@ module.exports = {
     createPizzaToppings: async(req, res) => {
         try {
             await PizzaTopping.create({name: (req.body.name).toLowerCase()})
+            res.status(200)
             res.redirect("/toppings")
         } catch(err) {
             if(err.code == "11000") {
@@ -23,6 +25,7 @@ module.exports = {
     deletePizzaToppings: async(req, res) => {
         try {
             await PizzaTopping.findByIdAndDelete({_id: req.params.id})
+            res.status(200)
             res.json("Deleted topping with id " + req.params.id)
         } catch(err) {
             console.error(err)
