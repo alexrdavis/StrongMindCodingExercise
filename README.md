@@ -1,6 +1,9 @@
 # StrongMindCodingExercise
 Coding exercise for StrongMind Jr Software Engineer
 
+## Demo
+Working Demo https://strongmindcodingexercise.herokuapp.com/
+
 ## Running Locally
 npm install to get all dependencies
 
